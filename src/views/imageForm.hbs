@@ -1,0 +1,60 @@
+
+    <div class="row mt-5">
+        <div class="col-md-4 ">
+            <div class="card">
+                <div class="card-header">
+                    Upload Image
+                </div>
+
+                <div class="card-body">
+                    <form action="/image/add" method="post" enctype="multipart/form-data" >
+                        <div class="form-group">
+                            <input type="text" name="title" placeholder="titulo" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="description" class="form-control" rows="2" placeholder="description" ></textarea>
+                        </div>
+                        <div class="input-group mb-3">
+
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="image">
+                                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Cargar file</label>
+                            </div>
+                            
+                       </div>  
+
+                       <button type="submit" class="btn btn-primary btn-block">Save Photo</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>description</th>
+                        <th>operacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each image}}
+
+                      <tr>
+                          <td>{{title}}</td>
+                          <td>{{description}}</td>
+                          <td>
+                              <a href="{{imageUrl}}" target="_blank" class="btn btn-success">Vista</a>
+                         
+                              <a href="/image/delete/{{_id}}"  class="btn btn-danger">eliminar</a>
+                          </td>
+                      </tr>
+
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
